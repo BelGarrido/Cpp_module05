@@ -10,7 +10,6 @@ class Bureaucrat {
     protected:
         const std::string _name;
         int _grade;
-
         Bureaucrat();
 
     public:
@@ -22,13 +21,22 @@ class Bureaucrat {
         std::string getName() const;
         int getGrade() const;
 
+        class GradeTooHighException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
+        class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
         bool validGrade(int grade);
         void increment();
         void decrement();
 
         void print(const std::string &message) const;
 } ;
-
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureau);
 

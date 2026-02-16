@@ -10,11 +10,12 @@ Bureaucrat::Bureaucrat()
 Bureaucrat::Bureaucrat(std::string const &name, int grade)
     :_name(name)
 {
-    if (validGrade(grade))
-        _grade = grade;
-    else
-        std::cout << RED << "Bureaucrat can not be created" << RESET << std::endl;
-        // problemaaaaaaaaaas, no deberia crearse
+    if (grade < 1)
+        throw GradeTooHighException();
+    else if (grade > 150)
+        throw GradeTooLowException();
+    
+    _grade = grade;
     std::cout << "Bureaucrat " << _name << " created with parametized constructor" << std::endl;
 }
 
@@ -66,27 +67,34 @@ void Bureaucrat::decrement()
 {
     int grade = _grade;
     grade++;
-    if(validGrade(grade))
-        _grade++;
+    if (grade > 150)
+        throw GradeTooLowException();
     else
-        ;
-        //problemas
+        _grade = grade; 
 }
 void Bureaucrat::increment()
 {
     int grade = _grade;
     grade--;
-    if(validGrade(grade))
-        _grade--;
+    if (grade < 1) {
+        std::cout << "Increment is imposible: ";
+        throw GradeTooHighException();
+    }
     else
-        std::cout << "Bureaucrat can not be created" << std::endl;
-        // problemas
+        _grade = grade; 
 }
 
 std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureau) {
-  // Convert fixed-point number to float and insert into the stream
   output << bureau.getName();
   output << ", bureaucrat grade ";
   output << bureau.getGrade();
   return output;
+}
+
+const char*  Bureaucrat::GradeTooHighException::what() const throw() {
+    return "Grade is too high";
+}
+
+const char*  Bureaucrat::GradeTooLowException::what() const throw() {
+    return "Grade is too low";
 }
