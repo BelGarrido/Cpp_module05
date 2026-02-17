@@ -5,7 +5,8 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = burea
 
 SRC = main.cpp \
-	Bureaucrat.cpp 
+	Bureaucrat.cpp \
+	form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

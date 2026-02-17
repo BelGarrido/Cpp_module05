@@ -72,8 +72,7 @@ const char*  Bureaucrat::GradeTooLowException::what() const throw() {
 
 //________________________OTHER_MEMEBERS_FT__
 
-void Bureaucrat::decrement()
-{
+void Bureaucrat::decrement() {
     int grade = _grade;
     grade++;
     validGrade(grade);
@@ -82,13 +81,16 @@ void Bureaucrat::decrement()
 
 }
 
-void Bureaucrat::increment()
-{
+void Bureaucrat::increment() {
     int grade = _grade;
     grade--;
     validGrade(grade);
     _grade = grade; 
     print("grade +");
+}
+
+void Bureaucrat::signForm() {
+    beSigned(*this);
 }
 
 //_____________________________INSERTION__

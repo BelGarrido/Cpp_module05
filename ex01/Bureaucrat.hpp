@@ -3,7 +3,6 @@
 
 #include <string>
 #include <iostream>
-
 #include "colors.hpp"
 
 class Bureaucrat {
@@ -53,7 +52,8 @@ class Bureaucrat {
 
         void increment();
         void decrement();
-
+        void signForm();
+        
         void print(const std::string &message) const;    
 } ;
 
