@@ -2,11 +2,11 @@
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = burea
+NAME = bureau
 
 SRC = main.cpp \
 	Bureaucrat.cpp \
-	form.cpp
+	Form.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

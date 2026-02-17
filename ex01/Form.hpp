@@ -1,26 +1,26 @@
 #ifndef FORM_HPP
-#define FROM_HPP
+#define FORM_HPP
 
 #include <string>
 #include <iostream>
 #include "colors.hpp"
-#include "Bureaucrat.hpp"
+//#include "Bureaucrat.hpp"
 
+class Bureaucrat;
 
 class Form {
     private: 
         const std::string _name;
-        bool _isSigned = false;
+        bool _isSigned;
         const int _sgnGrade;
         const int _excGrade;
         Form();
 
     public:
-
         Form(const Form &original);
-        Form::Form(std::string const &name, int sgnGrade, int excGrade);
+        Form(std::string const &name, int sgnGrade, int excGrade);
         Form& operator=(const Form &original);
-        Form::~Form();
+        ~Form();
         bool beSigned(Bureaucrat &b);
 
         //_________________________________EXCEPTIONS__

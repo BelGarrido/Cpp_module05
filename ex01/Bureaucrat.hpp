@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include "colors.hpp"
+#include "Form.hpp"
 
 class Bureaucrat {
     private:
@@ -52,7 +53,7 @@ class Bureaucrat {
 
         void increment();
         void decrement();
-        void signForm();
+        void signForm(Form &f);
         
         void print(const std::string &message) const;    
 } ;
