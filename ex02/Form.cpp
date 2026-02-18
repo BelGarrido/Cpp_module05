@@ -3,7 +3,7 @@
 
 //______________________ DEFAULT_CONSTRUCTOR__
 
-Form::Form()
+AForm::AForm()
     :_name("Just another bureaucrat"),
     _isSigned(false),
     _sgnGrade(150),
@@ -14,7 +14,7 @@ Form::Form()
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
 
-Form::Form(std::string const &name, int sgnGrade, int excGrade)
+AForm::AForm(std::string const &name, int sgnGrade, int excGrade)
     :_name(name),
     _isSigned(false),
     _sgnGrade(sgnGrade),
@@ -28,13 +28,13 @@ Form::Form(std::string const &name, int sgnGrade, int excGrade)
 
 //_________________________________DESTRUCTOR__
 
-Form::~Form() {
+AForm::~AForm() {
     print("left the terminal");
 }
 
 //_______________________________________COPY__
 
-Form::Form(const Form &original)
+AForm::AForm(const AForm &original)
     :_name(original._name),
     _isSigned(original._isSigned),
     _sgnGrade(original._sgnGrade),
@@ -51,40 +51,40 @@ Form::Form(const Form &original)
     return *this;
 } */
 
-void Form::validGrade(int grade)
+void AForm::validGrade(int grade)
 {
     if (grade < 1)
         throw GradeTooHighException();
     else if (grade > 150)
         throw GradeTooLowException();
 }
-const char*  Form::GradeTooHighException::what() const throw() {
+const char*  AForm::GradeTooHighException::what() const throw() {
     return "Grade is too high";
 }
 
-const char*  Form::GradeTooLowException::what() const throw() {
+const char*  AForm::GradeTooLowException::what() const throw() {
     return "Grade is too low";
 }
 
 //____________________________________GETTERS__
 
-std::string Form::getName() const {
+std::string AForm::getName() const {
     return _name;
 }
 
-bool Form::isSigned() const {
+bool AForm::isSigned() const {
     return _isSigned;
 }
 
-int Form::getSgnGrade() const {
+int AForm::getSgnGrade() const {
     return _sgnGrade;
 }
 
-int Form::getExcGrade() const {
+int AForm::getExcGrade() const {
     return _excGrade;
 }
 
-std::ostream& operator<<(std::ostream& output, const Form& f) {
+std::ostream& operator<<(std::ostream& output, const AForm& f) {
   output << f.getName();
   output << ", with sign grade of ";
   output << f.getSgnGrade();
@@ -93,7 +93,7 @@ std::ostream& operator<<(std::ostream& output, const Form& f) {
   return output;
 }
 
-bool Form::beSigned(Bureaucrat &b) {
+bool AForm::beSigned(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
         _isSigned = true;
        std::cout << b << " signed " << this->getName() << std::endl;
@@ -105,6 +105,6 @@ bool Form::beSigned(Bureaucrat &b) {
 }
 
 
-void Form::print(const std::string &message) const {
+void AForm::print(const std::string &message) const {
     std::cout << WHITE << *this << " " << message << RESET << std::endl;
 }
