@@ -89,8 +89,12 @@ void Bureaucrat::increment() {
     print("grade +");
 }
 
-void Bureaucrat::signForm(Form &f) {
+void Bureaucrat::signForm(AForm &f) {
     f.beSigned(*this);
+}
+
+void Bureaucrat::executeForm(AForm &f) {
+    f.beExecuted(*this);
 }
 
 //_____________________________INSERTION__

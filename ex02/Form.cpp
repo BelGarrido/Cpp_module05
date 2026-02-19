@@ -95,15 +95,28 @@ std::ostream& operator<<(std::ostream& output, const AForm& f) {
 
 bool AForm::beSigned(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
-        _isSigned = true;
-       std::cout << b << " signed " << this->getName() << std::endl;
-       return true;
+        toSign();
+        std::cout << b << " signed " << this->getName() << std::endl;
+        return true;
     }
     
     std::cout << b << " couldn’t sign "<< this->getName() << " because " << "grade is too low" << std::endl;
     throw GradeTooLowException();
 }
 
+bool AForm::beExecuted(Bureaucrat &b) {
+    if(b.getGrade() <= _excGrade) {
+        std::cout << b << " executed " << this->getName() << std::endl;
+        return true;
+    }
+    std::cout << b << " couldn’t be executed " << this->getName() << " because " << "grade is too low" << std::endl;
+    throw GradeTooLowException();   
+}
+
+
+void AForm::toSign() {
+    _isSigned = true;
+}
 
 void AForm::print(const std::string &message) const {
     std::cout << WHITE << *this << " " << message << RESET << std::endl;

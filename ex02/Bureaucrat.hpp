@@ -53,7 +53,8 @@ class Bureaucrat {
 
         void increment();
         void decrement();
-        void signForm(Form &f);
+        void signForm(AForm &f);
+        void executeForm(AForm &f);
         
         void print(const std::string &message) const;    
 } ;

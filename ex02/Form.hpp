@@ -17,12 +17,13 @@ class AForm {
         AForm();
 
     public:
-        AForm(const AForm &original);
         AForm(std::string const &name, int sgnGrade, int excGrade);
+        AForm(const AForm &original);
         AForm& operator=(const AForm &original);
         //Lo que hace virtual es permitir binding dinámico cuando usas punteros o referencias a la clase base.
         virtual ~AForm();
         virtual bool beSigned(Bureaucrat &b) = 0;
+        virtual bool beExecuted(Bureaucrat &b) = 0;
 
         //_________________________________EXCEPTIONS__
 
@@ -43,7 +44,9 @@ class AForm {
         bool isSigned() const;
         int getSgnGrade() const;
         int getExcGrade() const;
-        
+
+        //SETTERS
+        void toSign();
         void print(const std::string &message) const;
 } ;
 
