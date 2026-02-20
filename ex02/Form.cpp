@@ -59,11 +59,11 @@ void AForm::validGrade(int grade)
         throw GradeTooLowException();
 }
 const char*  AForm::GradeTooHighException::what() const throw() {
-    return "Grade is too high";
+    return "EXEPTION!: Grade is too high";
 }
 
 const char*  AForm::GradeTooLowException::what() const throw() {
-    return "Grade is too low";
+    return "EXEPTION!: Grade is too low";
 }
 
 //____________________________________GETTERS__
