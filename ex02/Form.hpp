@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "colors.hpp"
 //#include "Bureaucrat.hpp"
 

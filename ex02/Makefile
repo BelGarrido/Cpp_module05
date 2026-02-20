@@ -7,7 +7,8 @@ NAME = bureau
 SRC = main.cpp \
 	Bureaucrat.cpp \
 	Form.cpp \
-	ShrubberyCreationForm.cpp
+	ShrubberyCreationForm.cpp \
+	RobotomyRequestForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
