@@ -39,6 +39,7 @@ bool RobotomyRequest::beExecuted(Bureaucrat &b) {
     int excGrade = this->getExcGrade();
     if(b.getGrade() <= excGrade) {
         std::cout << b << " Grrrrrr..Drrrrrr..Trtrtrtr...Ratatatat...GRRRRKKK" << std::endl;
+        std::cout << _target << " has been robotomized" << std::endl;
         std::cout << b << " executed " << this->getName() << std::endl;
         return true;
     }
