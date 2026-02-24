@@ -61,7 +61,7 @@ int main()
         b3 = new Bureaucrat("CEO", 1);
         Intern someRandomIntern;
         AForm* rrf;
-        rrf = someRandomIntern.makeForm("f pardon", "Bender");
+        rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
         if(rrf)
             b3->signForm(*rrf);
     }

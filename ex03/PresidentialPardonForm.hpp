@@ -10,7 +10,7 @@ class PresidentialPardon: public AForm {
 
     public:
         PresidentialPardon();
-        PresidentialPardon(std::string &target);
+        PresidentialPardon(const std::string &target);
         PresidentialPardon(const PresidentialPardon &original);
         //no se hacerlo, se me ocurre llamar al constructor de Aform en el cosntructor de SC y hay settear los artibutos (?)
         

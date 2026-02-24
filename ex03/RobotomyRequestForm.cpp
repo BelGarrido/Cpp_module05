@@ -2,7 +2,7 @@
 
 //default constructor(?)
 
-RobotomyRequest::RobotomyRequest(std::string &target): AForm("RobotomyRequest", 72, 45) {
+RobotomyRequest::RobotomyRequest(const std::string &target): AForm("RobotomyRequest", 72, 45) {
     _target = target;
     std::cout << "RobotomyRequest has been created with it's constructor with a target: " << _target << std::endl;
     /* std::string fileName = target + "_shrubbery.txt";

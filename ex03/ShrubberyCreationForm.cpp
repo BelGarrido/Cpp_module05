@@ -3,7 +3,7 @@
 
 //default constructor(?)
 
-ShrubberyCreation::ShrubberyCreation(std::string &target): AForm("ShrubberyCreation", 145, 137) {
+ShrubberyCreation::ShrubberyCreation(const std::string &target): AForm("ShrubberyCreation", 145, 137) {
     _target = target;
     std::cout << "ShrubberyCreation has been created with it's constructor with a target: " << _target << std::endl;
     /* std::string fileName = target + "_shrubbery.txt";

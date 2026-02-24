@@ -10,7 +10,7 @@ class RobotomyRequest: public AForm {
 
     public:
         RobotomyRequest();
-        RobotomyRequest(std::string &target);
+        RobotomyRequest(const std::string &target);
         RobotomyRequest(const RobotomyRequest &original);
         //no se hacerlo, se me ocurre llamar al constructor de Aform en el cosntructor de SC y hay settear los artibutos (?)
         

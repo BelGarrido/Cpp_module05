@@ -2,7 +2,7 @@
 
 //default constructor(?)
 
-PresidentialPardon::PresidentialPardon(std::string &target): AForm("PresidentialPardon", 25, 5) {
+PresidentialPardon::PresidentialPardon(const std::string &target): AForm("PresidentialPardon", 25, 5) {
     _target = target;
     std::cout << "PresidentialPardon has been created with it's constructor with a target: " << _target << std::endl;
     /* std::string fileName = target + "_shrubbery.txt";

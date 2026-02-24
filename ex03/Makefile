@@ -1,4 +1,3 @@
-
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
@@ -12,18 +11,27 @@ SRC = main.cpp \
 	PresidentialPardonForm.cpp \
 	Intern.cpp
 
-OBJ = $(SRC:.cpp=.o)
+# Directorio donde irán los .o
+OBJ_DIR = obj
+
+# Transformamos los .cpp en obj/*.o
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp
+# Regla para crear el directorio si no existe
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+# Regla de compilación hacia obj/
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

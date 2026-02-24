@@ -10,7 +10,7 @@ class ShrubberyCreation: public AForm {
 
     public:
         ShrubberyCreation();
-        ShrubberyCreation(std::string &target);
+        ShrubberyCreation(const std::string &target);
         ShrubberyCreation(const ShrubberyCreation &original);
         //no se hacerlo, se me ocurre llamar al constructor de Aform en el cosntructor de SC y hay settear los artibutos (?)
         

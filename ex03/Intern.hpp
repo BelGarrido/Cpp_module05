@@ -7,8 +7,9 @@
 #include "PresidentialPardonForm.hpp"
 
 class Intern {
-    private:
+    
     public:
+        static const int FORM_COUNT = 3;
         //___________________ PARAMETIZED_CONSTRUCTOR__
 
         Intern();
@@ -23,6 +24,16 @@ class Intern {
         virtual ~Intern();
         AForm* makeForm(const std::string &formName, const std::string &target);
         void print(const std::string &message) const;
+        
+
+    private:
+        static std::string names[FORM_COUNT];
+        static AForm *(*fPtr[FORM_COUNT])(std::string&);
 };
+
+
+    AForm *robotomyPtr(const std::string &target);
+    AForm *presidentialPtr(const std::string &target);
+    AForm *shrubberyPtr(const std::string &target);
 
 #endif
