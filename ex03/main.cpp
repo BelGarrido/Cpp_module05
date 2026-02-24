@@ -1,7 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Intern.hpp"
 
-
 int main()
 {
     std::srand(std::time(NULL));
