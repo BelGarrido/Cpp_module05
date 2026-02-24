@@ -6,10 +6,23 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-class Intern : public Bureaucrat {
+class Intern {
     private:
     public:
-        AForm* makeForm(std::string &formName, std::string &target);
+        //___________________ PARAMETIZED_CONSTRUCTOR__
+
+        Intern();
+
+        //_______________________________________COPY__
+
+        Intern(const Intern &original);
+        Intern &operator=(const Intern &original);
+
+        //_________________________________DESTRUCTOR__
+
+        virtual ~Intern();
+        AForm* makeForm(const std::string &formName, const std::string &target);
+        void print(const std::string &message) const;
 };
 
 #endif

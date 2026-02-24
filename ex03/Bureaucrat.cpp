@@ -6,7 +6,7 @@ Bureaucrat::Bureaucrat()
     :_name("Just another bureaucrat"),
     _grade(150)
 {
-    std::cout << _name << " created with parametized constructor" << std::endl;
+    std::cout << MAGENTA << _name << " created with parametized constructor" << std::endl;
 }
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
@@ -107,5 +107,5 @@ std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureau) {
 }
 
 void Bureaucrat::print(const std::string &message) const {
-    std::cout << WHITE << *this << " " << message << RESET << std::endl;
+    std::cout << MAGENTA << *this << " " << message << RESET << std::endl;
 }

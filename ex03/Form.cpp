@@ -9,7 +9,8 @@ AForm::AForm()
     _sgnGrade(150),
     _excGrade(150)
 {
-    std::cout << _name << " created with default constructor" << std::endl;
+    print("created with default constructor");
+    //std::cout << _name << " created with default constructor" << std::endl;
 }
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
@@ -96,7 +97,7 @@ std::ostream& operator<<(std::ostream& output, const AForm& f) {
 bool AForm::beSigned(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
         toSign();
-        std::cout << b << " signed " << this->getName() << std::endl;
+        std::cout << YELLOW << b << " signed " << this->getName() << RESET << std::endl;
         return true;
     }
     
@@ -106,7 +107,7 @@ bool AForm::beSigned(Bureaucrat &b) {
 
 bool AForm::beExecuted(Bureaucrat &b) {
     if(b.getGrade() <= _excGrade) {
-        std::cout << b << " executed " << this->getName() << std::endl;
+        print("executed");
         return true;
     }
     std::cout << b << " couldn’t be executed " << this->getName() << " because " << "grade is too low" << std::endl;
@@ -115,9 +116,10 @@ bool AForm::beExecuted(Bureaucrat &b) {
 
 
 void AForm::toSign() {
+    print("signed");
     _isSigned = true;
 }
 
 void AForm::print(const std::string &message) const {
-    std::cout << WHITE << *this << " " << message << RESET << std::endl;
+    std::cout << CYAN << *this << " " << message << RESET << std::endl;
 }

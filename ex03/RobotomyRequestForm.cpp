@@ -27,7 +27,7 @@ bool RobotomyRequest::beSigned(Bureaucrat &b) {
     int sgnGrade = this->getSgnGrade();
     if (b.getGrade() <= sgnGrade) {
         this->toSign();
-        std::cout << b << " signed " << this->getName() << std::endl;
+        //std::cout << MAGENTA << b << " signed " << this->getName() << RESET << std::endl;
         return true;
     }
     std::cout << b << " couldn’t sign " << this->getName() << " because " << "grade is too low" << std::endl;

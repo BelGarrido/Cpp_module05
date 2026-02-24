@@ -1,7 +1,6 @@
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
+
 
 int main()
 {
@@ -31,7 +30,7 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << YELLOW << "*´¯`*..*´¯`* [ F2: RobotomyRequest ] *´¯`*..*´¯`* " << RESET << std::endl;    
+    std::cout << WHITE << "*´¯`*..*´¯`* [ F2: RobotomyRequest ] *´¯`*..*´¯`* " << RESET << std::endl;    
     try {
         f2 = new RobotomyRequest(target);
         b2 = new Bureaucrat("Boss", 10);
@@ -44,7 +43,7 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << CYAN << "*´¯`*..*´¯`* [ F3: PresidentialPardon ] *´¯`*..*´¯`* " << RESET << std::endl;        
+    std::cout << WHITE << "*´¯`*..*´¯`* [ F3: PresidentialPardon ] *´¯`*..*´¯`* " << RESET << std::endl;        
     try {
         f3 = new PresidentialPardon(target);
         b3 = new Bureaucrat("CEO", 1);
@@ -52,6 +51,19 @@ int main()
         b3->signForm(*f3);
         b3->executeForm(*f3);
         b1->executeForm(*f3);
+    }
+    catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    std::cout << WHITE << "*´¯`*..*´¯`* [ F4: makeForm ] *´¯`*..*´¯`* " << RESET << std::endl; 
+    try {
+        b3 = new Bureaucrat("CEO", 1);
+        Intern someRandomIntern;
+        AForm* rrf;
+        rrf = someRandomIntern.makeForm("f pardon", "Bender");
+        if(rrf)
+            b3->signForm(*rrf);
     }
     catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
