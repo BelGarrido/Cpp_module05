@@ -3,7 +3,7 @@
 
 #include <string>
 #include <iostream>
-#include "colors.hpp"
+#include "../colors.hpp"
 
 class Bureaucrat {
     private:
