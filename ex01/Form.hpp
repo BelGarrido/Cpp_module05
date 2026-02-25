@@ -19,9 +19,6 @@ class Form {
         // DEFAULT_CONSTRUCTOR
         Form();
 
-        // COPY
-        Form& operator=(const Form &original);
-
     public:
                 
         // PARAMETIZED_CONSTRUCTOR
@@ -29,6 +26,8 @@ class Form {
 
         // COPY
         Form(std::string const &name, int sgnGrade, int excGrade);
+        Form& operator=(const Form &original);
+
         // DESTRUCTOR
         ~Form();
 

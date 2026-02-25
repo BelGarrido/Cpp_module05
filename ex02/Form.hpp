@@ -21,20 +21,18 @@ class AForm {
         // DEFAULT_CONSTRUCTOR
         AForm();
 
-        // COPY
-        AForm& operator=(const AForm &original);
-
     public:
         // PARAMETIZED_CONSTRUCTOR
         AForm(std::string const &name, int sgnGrade, int excGrade);
+
         // COPY
         AForm(const AForm &original);
+        AForm& operator=(const AForm &original);
         
         // DESTRUCTOR
         virtual ~AForm();
         
         // EXCEPTIONS
-
         void validGrade(int grade);
 
         class GradeTooHighException : public std::exception {

@@ -2,7 +2,7 @@
 
 int main()
 {
-    std::cout << BLUE << "*´¯`*..*´¯`* [ B1: Intern ] *´¯`*..*´¯`* " << RESET << std::endl;    
+    std::cout << BLUE << "\n" << "*´¯`*..*´¯`* [ VALID FORM CREATION ] *´¯`*..*´¯`* " << RESET << std::endl;    
     try {
         Bureaucrat b1("Intern", 149);
         Form f1("form 1", 148, 130);
@@ -13,9 +13,7 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-
-    std::cout << std::endl;
-    std::cout << BLUE << "*´¯`*..*´¯`* [ B2: Outsider ] *´¯`*..*´¯`* " << RESET << std::endl;
+    std::cout << BLUE << "\n" << "*´¯`*..*´¯`* [ INVALID FORM: TOO HIGH GRADE ] *´¯`*..*´¯`* " << RESET << std::endl;
     try {
         Bureaucrat b2("Outsider", 151);
     }
@@ -23,9 +21,7 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-
-    std::cout << std::endl;
-    std::cout << BLUE << "*´¯`*..*´¯`* [ B3: Manager ] *´¯`*..*´¯`* " << RESET << std::endl;
+    std::cout << BLUE << "\n" << "*´¯`*..*´¯`* [ INVALID FORM: TOO LOW GRADE ] *´¯`*..*´¯`* " << RESET << std::endl;
     try {
         Bureaucrat b3("Manager", 60);
         Form f3("form 3", 3, 1);
@@ -36,9 +32,7 @@ int main()
         std::cout << e.what() << std::endl;
     }
 
-
-    std::cout << std::endl;
-    std::cout << BLUE << "*´¯`*..*´¯`* [ B4 and B5: Boss and Fake boss ] *´¯`*..*´¯`* " << RESET << std::endl;
+    std::cout << BLUE << "\n" << "*´¯`*..*´¯`* [ IGNING FORM SUCCESS & FAILURE ] *´¯`*..*´¯`* " << RESET << std::endl;
     try {
         Bureaucrat b4("Boss", 1);
         Bureaucrat b5("Fake Boss", 150);

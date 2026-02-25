@@ -41,10 +41,11 @@ Form::Form(const Form &original)
 }
 
 // the =operator is implemented however the name doesnt change because it was defined as const string 
-Form& Form::operator=(const Form &original) {
-    print("using copy assigment but nothing can be reassigned");
-    return *this;
+Form &Form::operator=(const Form &other) {
+	if (this != &other) _isSigned = other._isSigned;
+	return *this;
 }
+
 //________________________________EXCEPTIONS__
 
 void Form::validGrade(int grade) {

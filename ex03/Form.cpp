@@ -40,10 +40,9 @@ AForm::AForm(const AForm &original)
     print("cloned with copy constructor");
 }
 
-// the =operator is implemented however the name doesnt change because it was defined as const string 
-AForm& AForm::operator=(const AForm &original) {
-    print("using copy assigment but nothing can be reassigned");
-    return *this;
+AForm &AForm::operator=(const AForm &other) {
+	if (this != &other) _isSigned = other._isSigned;
+	return *this;
 }
 
 //________________________________EXCEPTIONS__

@@ -5,22 +5,17 @@
 PresidentialPardon::PresidentialPardon(std::string &target): AForm("PresidentialPardon", 25, 5) {
     _target = target;
     std::cout << "PresidentialPardon has been created with it's constructor with a target: " << _target << std::endl;
-    /* std::string fileName = target + "_shrubbery.txt";
-    std::ofstream NewFile(fileName.c_str());
-    NewFile << "Something";
-    NewFile.close(); */
 }
 
 PresidentialPardon::PresidentialPardon(const PresidentialPardon &original) : AForm(original) {}
 
-//necesito repasar los asignadores de copia de este ejercicio y los anteriores
-/* PresidentialPardon &PresidentialPardon::operator=(const PresidentialPardon &original) {
+PresidentialPardon &PresidentialPardon::operator=(const PresidentialPardon &original) {
     AForm::operator=(original);
     return *this;
-} */
+}
 
 PresidentialPardon::~PresidentialPardon() {
-    std::cout << GREEN << "PresidentialPardon Form destroyed" << RESET << std::endl;
+    std::cout << "PresidentialPardon Form destroyed" << RESET << std::endl;
 }
 
 bool PresidentialPardon::beSigned(Bureaucrat &b) {
