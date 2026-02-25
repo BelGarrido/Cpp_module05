@@ -7,35 +7,36 @@
 #include "Form.hpp"
 
 class Bureaucrat {
+    
     private:
         const std::string _name;
         int _grade;
 
-        //______________________ DEFAULT_CONSTRUCTOR__
+        // DEFAULT_CONSTRUCTOR
 
         Bureaucrat();
 
     public:
 
-        //___________________ PARAMETIZED_CONSTRUCTOR__
+        // PARAMETIZED_CONSTRUCTOR
 
         Bureaucrat(std::string const &name, int grade);
 
-        //_______________________________________COPY__
+        // COPY
 
         Bureaucrat(const Bureaucrat &original);
         Bureaucrat &operator=(const Bureaucrat &original);
 
-        //_________________________________DESTRUCTOR__
+        // DESTRUCTOR
 
         virtual ~Bureaucrat();
 
-        //____________________________________GETTERS__
+        // GETTERS
 
         std::string getName() const;
         int getGrade() const;
 
-        //_________________________________EXCEPTIONS__
+        // EXCEPTIONS
 
         void validGrade(int grade);
 
@@ -49,7 +50,7 @@ class Bureaucrat {
                 virtual const char* what() const throw();
         };
 
-        //________________________OTHER_MEMEBERS_FT__
+        // OTHER_MEMEBERS_FT
 
         void increment();
         void decrement();
