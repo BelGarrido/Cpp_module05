@@ -7,10 +7,8 @@ AForm::AForm()
     :_name("Just another bureaucrat"),
     _isSigned(false),
     _sgnGrade(150),
-    _excGrade(150)
-{
-    print("created with default constructor");
-    //std::cout << _name << " created with default constructor" << std::endl;
+    _excGrade(150) {
+    std::cout << _name << " created with default constructor" << std::endl;
 }
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
@@ -19,9 +17,8 @@ AForm::AForm(std::string const &name, int sgnGrade, int excGrade)
     :_name(name),
     _isSigned(false),
     _sgnGrade(sgnGrade),
-    _excGrade(excGrade)
+    _excGrade(excGrade) {
 
-{
     validGrade(_sgnGrade);
     validGrade(_excGrade);
     print("created with parametized constructor");
@@ -39,35 +36,34 @@ AForm::AForm(const AForm &original)
     :_name(original._name),
     _isSigned(original._isSigned),
     _sgnGrade(original._sgnGrade),
-    _excGrade(original._excGrade)
-{
+    _excGrade(original._excGrade) {
     print("cloned with copy constructor");
 }
 
 // the =operator is implemented however the name doesnt change because it was defined as const string 
-/* Form& Form::operator=(const Form &original) {
-    if (this != &original)
-        this->_grade = original._grade;
-    print("using copy assigment");
+AForm& AForm::operator=(const AForm &original) {
+    print("using copy assigment but nothing can be reassigned");
     return *this;
-} */
+}
 
-void AForm::validGrade(int grade)
-{
+//________________________________EXCEPTIONS__
+
+void AForm::validGrade(int grade) {
     if (grade < 1)
         throw GradeTooHighException();
     else if (grade > 150)
         throw GradeTooLowException();
 }
+
 const char*  AForm::GradeTooHighException::what() const throw() {
-    return "EXEPTION!: Grade is too high";
+    return "EXEPTION(form)!: Grade is too high";
 }
 
 const char*  AForm::GradeTooLowException::what() const throw() {
-    return "EXEPTION!: Grade is too low";
+    return "EXEPTION(form)!: Grade is too low";
 }
 
-//____________________________________GETTERS__
+//___________________________________GETTERS__
 
 std::string AForm::getName() const {
     return _name;
@@ -85,6 +81,8 @@ int AForm::getExcGrade() const {
     return _excGrade;
 }
 
+//_____________________________INSERTION__
+
 std::ostream& operator<<(std::ostream& output, const AForm& f) {
   output << f.getName();
   output << ", with sign grade of ";
@@ -94,10 +92,12 @@ std::ostream& operator<<(std::ostream& output, const AForm& f) {
   return output;
 }
 
+//________________________OTHER_MEMEBERS_FT__
+
 bool AForm::beSigned(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
         toSign();
-        std::cout << YELLOW << b << " signed " << this->getName() << RESET << std::endl;
+        std::cout << b << " signed " << this->getName() << std::endl;
         return true;
     }
     
@@ -107,19 +107,17 @@ bool AForm::beSigned(Bureaucrat &b) {
 
 bool AForm::beExecuted(Bureaucrat &b) {
     if(b.getGrade() <= _excGrade) {
-        print("executed");
+        std::cout << b << " executed " << this->getName() << std::endl;
         return true;
     }
     std::cout << b << " couldn’t be executed " << this->getName() << " because " << "grade is too low" << std::endl;
     throw GradeTooLowException();   
 }
 
-
 void AForm::toSign() {
-    print("signed");
     _isSigned = true;
 }
 
 void AForm::print(const std::string &message) const {
-    std::cout << CYAN << *this << " " << message << RESET << std::endl;
+    std::cout << WHITE << *this << " " << message << RESET << std::endl;
 }

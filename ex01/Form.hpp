@@ -3,7 +3,8 @@
 
 #include <string>
 #include <iostream>
-#include "colors.hpp"
+#include "../colors.hpp"
+
 //#include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -14,17 +15,24 @@ class Form {
         bool _isSigned;
         const int _sgnGrade;
         const int _excGrade;
+
+        // DEFAULT_CONSTRUCTOR
         Form();
 
-    public:
-        Form(const Form &original);
-        Form(std::string const &name, int sgnGrade, int excGrade);
+        // COPY
         Form& operator=(const Form &original);
+
+    public:
+                
+        // PARAMETIZED_CONSTRUCTOR
+        Form(const Form &original);
+
+        // COPY
+        Form(std::string const &name, int sgnGrade, int excGrade);
+        // DESTRUCTOR
         ~Form();
-        bool beSigned(Bureaucrat &b);
 
-        //_________________________________EXCEPTIONS__
-
+        // EXCEPTIONS
         void validGrade(int grade);
 
         class GradeTooHighException : public std::exception {
@@ -42,9 +50,12 @@ class Form {
         bool isSigned() const;
         int getSgnGrade() const;
         int getExcGrade() const;
-        
+
+        // OTHER_MEMEBERS_FT
+        bool beSigned(Bureaucrat &b);
         void print(const std::string &message) const;
 } ;
 
+std::ostream& operator<<(std::ostream& output, const Form& f);
 
 #endif

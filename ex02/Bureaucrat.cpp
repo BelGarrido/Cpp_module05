@@ -59,11 +59,11 @@ void Bureaucrat::validGrade(int grade) {
 }
 
 const char*  Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Grade is too high";
+    return "EXCEPTION(bureaucrat)!: Grade is too high";
 }
 
 const char*  Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Grade is too low";
+    return "EXCEPTION(bureaucrat)!: Grade is too low";
 }
 
 //________________________OTHER_MEMEBERS_FT__

@@ -5,8 +5,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include <ctime>
-#include "colors.hpp"
+//#include <ctime>
+#include "../colors.hpp"
 //#include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -17,18 +17,23 @@ class AForm {
         bool _isSigned;
         const int _sgnGrade;
         const int _excGrade;
+
+        // DEFAULT_CONSTRUCTOR
         AForm();
 
-    public:
-        AForm(std::string const &name, int sgnGrade, int excGrade);
-        AForm(const AForm &original);
+        // COPY
         AForm& operator=(const AForm &original);
-        //Lo que hace virtual es permitir binding dinámico cuando usas punteros o referencias a la clase base.
-        virtual ~AForm();
-        virtual bool beSigned(Bureaucrat &b) = 0;
-        virtual bool beExecuted(Bureaucrat &b) = 0;
 
-        //_________________________________EXCEPTIONS__
+    public:
+        // PARAMETIZED_CONSTRUCTOR
+        AForm(std::string const &name, int sgnGrade, int excGrade);
+        // COPY
+        AForm(const AForm &original);
+        
+        // DESTRUCTOR
+        virtual ~AForm();
+        
+        // EXCEPTIONS
 
         void validGrade(int grade);
 
@@ -51,7 +56,13 @@ class AForm {
         //SETTERS
         void toSign();
         void print(const std::string &message) const;
+
+        // OTHER_MEMEBERS_FT
+        //Lo que hace virtual es permitir binding dinámico cuando usas punteros o referencias a la clase base.
+        virtual bool beSigned(Bureaucrat &b) = 0;
+        virtual bool beExecuted(Bureaucrat &b) = 0;
 } ;
 
+std::ostream& operator<<(std::ostream& output, const AForm& f);
 
 #endif
