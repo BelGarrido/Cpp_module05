@@ -25,16 +25,12 @@ AForm *shrubberyPtr(const std::string &target) {
 
 //_________________ STATIC_ARRAYS_DEFINITIONS__
 
-const int Intern::FORM_COUNT;
 std::string Intern::names[Intern::FORM_COUNT] = {
     "ROBOTOMY REQUEST",
     "PRESIDENTIAL PARDON",
     "SHRUBBERY CREATION"
 };
-AForm* (*fPtr[Intern::FORM_COUNT])(const std::string&) = {
-/*     robotomyPtr,
-    presidentialPtr,
-    shrubberyPtr */
+AForm* (*Intern::fPtr[Intern::FORM_COUNT])(const std::string&) = {
     &robotomyPtr,
     &presidentialPtr,
     &shrubberyPtr
@@ -42,8 +38,7 @@ AForm* (*fPtr[Intern::FORM_COUNT])(const std::string&) = {
 
 //______________________ DEFAULT_CONSTRUCTOR__
 
-Intern::Intern()
-{
+Intern::Intern() {
     print("created with default constructor");
 }
 
@@ -55,21 +50,22 @@ Intern::~Intern() {
 
 AForm* Intern::makeForm(const std::string &name, const std::string &target) {
     AForm *newForm = NULL;
+    int i = 0;
     std::string argm = target;
+    
     std::cout << "we are in the function make form " << target << std::endl;
-    //normalizar a mayusculas
-    //std::string names[3] = {"ROBOTOMY REQUEST", "PRESIDENTIAL PARDON", "SHRUBBERY CREATION"};
-    //AForm *(*fPtr[])(std::string&) = {robotomyPtr, presidentialPtr, shrubberyPtr};
     std::string normName = toUpperCase(name);
     std::cout << normName << std::endl;
-    int i = 0;
+    
     while(i < 3 && (names[i].compare(normName) != 0)){
         i++;
     }
+
     if(names[i].compare(normName) == 0)
         newForm = fPtr[i](argm);
     else
         print("does not know what are you talking about");
+    
     return newForm; 
 }
 

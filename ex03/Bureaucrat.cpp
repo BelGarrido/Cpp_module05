@@ -4,16 +4,14 @@
 
 Bureaucrat::Bureaucrat()
     :_name("Just another bureaucrat"),
-    _grade(150)
-{
+    _grade(150) {
     std::cout << MAGENTA << _name << " created with parametized constructor" << std::endl;
 }
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade)
-    :_name(name)
-{
+    :_name(name) {
     validGrade(grade);
     _grade = grade;
     print("created with parametized constructor");
@@ -29,12 +27,11 @@ Bureaucrat::~Bureaucrat() {
 
 Bureaucrat::Bureaucrat(const Bureaucrat &original)
     :_name(original._name),
-    _grade(original._grade)
-{
+    _grade(original._grade) {
     print("cloned with copy constructor");
 }
 
-// the =operator is implemented however the name doesnt change because it was defined as const string 
+// Name is const, so only grade can be reassigned
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &original) {
     if (this != &original)
         this->_grade = original._grade;
@@ -54,8 +51,7 @@ int Bureaucrat::getGrade() const {
 
 //________________________________EXCEPTIONS__
 
-void Bureaucrat::validGrade(int grade)
-{
+void Bureaucrat::validGrade(int grade) {
     if (grade < 1)
         throw GradeTooHighException();
     else if (grade > 150)

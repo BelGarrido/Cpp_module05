@@ -4,7 +4,7 @@
 int main()
 {
     std::srand(std::time(NULL));
-    std::cout << MAGENTA << "*´¯`*..*´¯`* [ F1: ShrubberyCreation ] *´¯`*..*´¯`* " << RESET << std::endl;    
+    std::cout << WHITE << "*´¯`*..*´¯`* [ F1: ShrubberyCreation ] *´¯`*..*´¯`* " << RESET << std::endl;    
     Bureaucrat *b1;
     Bureaucrat *b2;
     Bureaucrat *b3;
@@ -28,7 +28,7 @@ int main()
     catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-
+    std::cout << std::endl;
     std::cout << WHITE << "*´¯`*..*´¯`* [ F2: RobotomyRequest ] *´¯`*..*´¯`* " << RESET << std::endl;    
     try {
         f2 = new RobotomyRequest(target);
@@ -41,7 +41,7 @@ int main()
     catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-
+    std::cout << std::endl;
     std::cout << WHITE << "*´¯`*..*´¯`* [ F3: PresidentialPardon ] *´¯`*..*´¯`* " << RESET << std::endl;        
     try {
         f3 = new PresidentialPardon(target);
@@ -54,7 +54,7 @@ int main()
     catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-
+    std::cout << std::endl;
     std::cout << WHITE << "*´¯`*..*´¯`* [ F4: makeForm ] *´¯`*..*´¯`* " << RESET << std::endl; 
     try {
         b3 = new Bureaucrat("CEO", 1);
