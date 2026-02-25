@@ -5,6 +5,7 @@ NAME = bureau
 
 SRC = main.cpp \
 	Bureaucrat.cpp \
+	Form.cpp
 
 OBJ_DIR = obj
 
