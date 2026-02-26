@@ -5,6 +5,8 @@
 #include <iostream>
 #include "../colors.hpp"
 #include "Form.hpp"
+#include <cstdlib>
+#include <ctime>
 
 class Bureaucrat {
     
@@ -46,6 +48,11 @@ class Bureaucrat {
         };
 
         class GradeTooLowException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
+        class FormNotSignException : public std::exception {
             public:
                 virtual const char* what() const throw();
         };

@@ -1,30 +1,22 @@
 #include "ShrubberyCreationForm.hpp"
 
-
-//default constructor(?)
-
-ShrubberyCreation::ShrubberyCreation(std::string &target): AForm("ShrubberyCreation", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target): AForm("ShrubberyCreation", 145, 137) {
     _target = target;
     std::cout << "ShrubberyCreation has been created with it's constructor with a target: " << _target << std::endl;
-    /* std::string fileName = target + "_shrubbery.txt";
-    std::ofstream NewFile(fileName.c_str());
-    NewFile << "Something";
-    NewFile.close(); */
 }
 
-ShrubberyCreation::ShrubberyCreation(const ShrubberyCreation &original) : AForm(original) {}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original) : AForm(original) {}
 
-//necesito repasar los asignadores de copia de este ejercicio y los anteriores
-/* ShrubberyCreation &ShrubberyCreation::operator=(const ShrubberyCreation &original) {
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &original) {
     AForm::operator=(original);
     return *this;
-} */
-
-ShrubberyCreation::~ShrubberyCreation() {
-    std::cout << GREEN << "ShrubberyCreation Form destroyed" << RESET << std::endl;
 }
 
-bool ShrubberyCreation::beSigned(Bureaucrat &b) {
+ShrubberyCreationForm::~ShrubberyCreationForm() {
+    std::cout << "ShrubberyCreation Form left the terminal" << std::endl;
+}
+
+bool ShrubberyCreationForm::sign(Bureaucrat &b) {
     int sgnGrade = this->getSgnGrade();
     if (b.getGrade() <= sgnGrade) {
         this->toSign();
@@ -36,7 +28,7 @@ bool ShrubberyCreation::beSigned(Bureaucrat &b) {
 }
 
 
-bool ShrubberyCreation::beExecuted(Bureaucrat &b) {
+bool ShrubberyCreationForm::execute(Bureaucrat const &b) const {
     int excGrade = this->getExcGrade();
     std::string tree = 
         "             /\\\n"

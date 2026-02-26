@@ -4,22 +4,20 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class PresidentialPardon: public AForm {
+class PresidentialPardonForm: public AForm {
     private:
         std::string _target;
-
-    public:
-        PresidentialPardon();
-        PresidentialPardon(const std::string &target);
-        PresidentialPardon(const PresidentialPardon &original);
-        //no se hacerlo, se me ocurre llamar al constructor de Aform en el cosntructor de SC y hay settear los artibutos (?)
+        PresidentialPardonForm();
         
-        //tengo que checkear las copias
-        PresidentialPardon &operator=(const PresidentialPardon &original);
-        ~PresidentialPardon();
+    public:
+        PresidentialPardonForm(const std::string &target);
+        PresidentialPardonForm(const PresidentialPardonForm &original);
+        PresidentialPardonForm &operator=(const PresidentialPardonForm &original);
+        ~PresidentialPardonForm();
 
-        virtual bool beSigned(Bureaucrat &b);
-        virtual bool beExecuted(Bureaucrat &b);
+        virtual bool sign(Bureaucrat &b);
+        virtual bool execute(Bureaucrat const &b) const;
+        
 } ;
 
 #endif

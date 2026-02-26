@@ -1,29 +1,22 @@
 #include "PresidentialPardonForm.hpp"
 
-//default constructor(?)
-
-PresidentialPardon::PresidentialPardon(const std::string &target): AForm("PresidentialPardon", 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target): AForm("PresidentialPardon", 25, 5) {
     _target = target;
     std::cout << "PresidentialPardon has been created with it's constructor with a target: " << _target << std::endl;
-    /* std::string fileName = target + "_shrubbery.txt";
-    std::ofstream NewFile(fileName.c_str());
-    NewFile << "Something";
-    NewFile.close(); */
 }
 
-PresidentialPardon::PresidentialPardon(const PresidentialPardon &original) : AForm(original) {}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original) : AForm(original) {}
 
-//necesito repasar los asignadores de copia de este ejercicio y los anteriores
-/* PresidentialPardon &PresidentialPardon::operator=(const PresidentialPardon &original) {
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &original) {
     AForm::operator=(original);
     return *this;
-} */
-
-PresidentialPardon::~PresidentialPardon() {
-    std::cout << GREEN << "PresidentialPardon Form destroyed" << RESET << std::endl;
 }
 
-bool PresidentialPardon::beSigned(Bureaucrat &b) {
+PresidentialPardonForm::~PresidentialPardonForm() {
+    std::cout << "PresidentialPardon Form left the terminal" << std::endl;
+}
+
+bool PresidentialPardonForm::sign(Bureaucrat &b) {
     int sgnGrade = this->getSgnGrade();
     if (b.getGrade() <= sgnGrade) {
         this->toSign();
@@ -35,7 +28,7 @@ bool PresidentialPardon::beSigned(Bureaucrat &b) {
 }
 
 
-bool PresidentialPardon::beExecuted(Bureaucrat &b) {
+bool PresidentialPardonForm::execute(Bureaucrat const &b) const {
     int excGrade = this->getExcGrade();
     if(b.getGrade() <= excGrade) {
         std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;

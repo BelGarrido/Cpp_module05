@@ -1,24 +1,22 @@
 #include "PresidentialPardonForm.hpp"
 
-//default constructor(?)
-
-PresidentialPardon::PresidentialPardon(std::string &target): AForm("PresidentialPardon", 25, 5) {
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target): AForm("PresidentialPardon", 25, 5) {
     _target = target;
     std::cout << "PresidentialPardon has been created with it's constructor with a target: " << _target << std::endl;
 }
 
-PresidentialPardon::PresidentialPardon(const PresidentialPardon &original) : AForm(original) {}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original) : AForm(original) {}
 
-PresidentialPardon &PresidentialPardon::operator=(const PresidentialPardon &original) {
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &original) {
     AForm::operator=(original);
     return *this;
 }
 
-PresidentialPardon::~PresidentialPardon() {
-    std::cout << "PresidentialPardon Form destroyed" << RESET << std::endl;
+PresidentialPardonForm::~PresidentialPardonForm() {
+    std::cout << "PresidentialPardon Form left the terminal" << std::endl;
 }
 
-bool PresidentialPardon::beSigned(Bureaucrat &b) {
+bool PresidentialPardonForm::sign(Bureaucrat &b) {
     int sgnGrade = this->getSgnGrade();
     if (b.getGrade() <= sgnGrade) {
         this->toSign();
@@ -30,7 +28,7 @@ bool PresidentialPardon::beSigned(Bureaucrat &b) {
 }
 
 
-bool PresidentialPardon::beExecuted(Bureaucrat &b) {
+bool PresidentialPardonForm::execute(Bureaucrat const &b) const {
     int excGrade = this->getExcGrade();
     if(b.getGrade() <= excGrade) {
         std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;

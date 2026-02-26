@@ -50,6 +50,11 @@ class Bureaucrat {
                 virtual const char* what() const throw();
         };
 
+        class FormNotSignException : public std::exception {
+            public:
+                virtual const char* what() const throw();
+        };
+
         // OTHER_MEMEBERS_FT
 
         void increment();

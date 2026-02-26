@@ -87,7 +87,7 @@ void Bureaucrat::increment() {
 
 void Bureaucrat::signForm(Form &f) {
     if(f.isSigned() == false)
-        f.beSigned(*this);
+        f.sign(*this);
     else
         std::cout << f << " is already signed" << std::endl;
 }

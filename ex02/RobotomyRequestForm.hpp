@@ -4,22 +4,19 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-class RobotomyRequest: public AForm {
+class RobotomyRequestForm: public AForm {
     private:
         std::string _target;
+        RobotomyRequestForm();
 
     public:
-        RobotomyRequest();
-        RobotomyRequest(std::string &target);
-        RobotomyRequest(const RobotomyRequest &original);
-        //no se hacerlo, se me ocurre llamar al constructor de Aform en el cosntructor de SC y hay settear los artibutos (?)
-        
-        //tengo que checkear las copias
-        RobotomyRequest &operator=(const RobotomyRequest &original);
-        ~RobotomyRequest();
+        RobotomyRequestForm(const std::string &target);
+        RobotomyRequestForm(const RobotomyRequestForm &original);
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &original);
+        ~RobotomyRequestForm();
 
-        virtual bool beSigned(Bureaucrat &b);
-        virtual bool beExecuted(Bureaucrat &b);
+        virtual bool sign(Bureaucrat &b);
+        virtual bool execute(Bureaucrat const &b) const;
 } ;
 
 #endif

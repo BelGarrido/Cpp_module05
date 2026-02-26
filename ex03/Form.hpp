@@ -57,8 +57,8 @@ class AForm {
 
         // OTHER_MEMEBERS_FT
         //Lo que hace virtual es permitir binding dinámico cuando usas punteros o referencias a la clase base.
-        virtual bool beSigned(Bureaucrat &b) = 0;
-        virtual bool beExecuted(Bureaucrat &b) = 0;
+        virtual bool sign(Bureaucrat &b) = 0;
+        virtual bool execute(Bureaucrat const &b) const = 0;
 } ;
 
 std::ostream& operator<<(std::ostream& output, const AForm& f);

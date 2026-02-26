@@ -9,18 +9,15 @@ std::string toUpperCase(std::string s);
 //_________________________ FACTORY_FUNCTIONS__
 
 AForm *robotomyPtr(const std::string &target) {
-    std::cout << "robotomy constructor: " << target << std::endl;
-    return new RobotomyRequest(target);
+    return new RobotomyRequestForm(target);
 }
 
 AForm *presidentialPtr(const std::string &target) {
-    std::cout << "presidential constructor: " << target << std::endl;
-    return new PresidentialPardon(target);
+    return new PresidentialPardonForm(target);
 }
 
 AForm *shrubberyPtr(const std::string &target) {
-    std::cout << "shrubbery constructor: " << target << std::endl;
-    return new ShrubberyCreation(target);
+    return new ShrubberyCreationForm(target);
 }
 
 //_________________ STATIC_ARRAYS_DEFINITIONS__
@@ -53,16 +50,16 @@ AForm* Intern::makeForm(const std::string &name, const std::string &target) {
     int i = 0;
     std::string argm = target;
     
-    std::cout << "we are in the function make form " << target << std::endl;
     std::string normName = toUpperCase(name);
-    std::cout << normName << std::endl;
     
     while(i < 3 && (names[i].compare(normName) != 0)){
         i++;
     }
 
-    if(names[i].compare(normName) == 0)
+    if(names[i].compare(normName) == 0) {
         newForm = fPtr[i](argm);
+        std::cout << "Intern creates " << *newForm << std::endl;
+    }
     else
         print("does not know what are you talking about");
     
@@ -70,7 +67,7 @@ AForm* Intern::makeForm(const std::string &name, const std::string &target) {
 }
 
 void Intern::print(const std::string &message) const {
-    std::cout << RED << "Intern " << message << RESET << std::endl;
+    std::cout << WHITE << "Intern " << message << RESET << std::endl;
 }
 
 std::string toUpperCase(std::string s){

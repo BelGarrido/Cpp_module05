@@ -51,7 +51,7 @@ class Form {
         int getExcGrade() const;
 
         // OTHER_MEMEBERS_FT
-        bool beSigned(Bureaucrat &b);
+        bool sign(Bureaucrat &b);
         void print(const std::string &message) const;
 } ;
 

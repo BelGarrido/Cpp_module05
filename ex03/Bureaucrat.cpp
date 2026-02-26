@@ -66,6 +66,10 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
     return "EXCEPTION(bureaucrat)!: Grade is too low";
 }
 
+const char*  Bureaucrat::FormNotSignException::what() const throw() {
+    return "EXCEPTION(bureaucrat)!: This form is not signed";
+}
+
 //________________________OTHER_MEMEBERS_FT__
 
 void Bureaucrat::decrement() {
@@ -86,11 +90,17 @@ void Bureaucrat::increment() {
 }
 
 void Bureaucrat::signForm(AForm &f) {
-    f.beSigned(*this);
+    if(f.isSigned() == false)
+        f.sign(*this);
+    else
+        std::cout << f << " is already signed" << std::endl;
 }
 
 void Bureaucrat::executeForm(AForm &f) {
-    f.beExecuted(*this);
+    if(f.isSigned() == true)
+        f.execute(*this);
+    else
+        throw FormNotSignException();
 }
 
 //_____________________________INSERTION__
@@ -103,5 +113,5 @@ std::ostream& operator<<(std::ostream& output, const Bureaucrat& bureau) {
 }
 
 void Bureaucrat::print(const std::string &message) const {
-    std::cout << MAGENTA << *this << " " << message << RESET << std::endl;
+    std::cout <<WHITE << *this << " " << message << RESET << std::endl;
 }

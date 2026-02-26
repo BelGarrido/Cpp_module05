@@ -94,7 +94,7 @@ std::ostream& operator<<(std::ostream& output, const Form& f) {
 
 //________________________OTHER_MEMEBERS_FT__
 
-bool Form::beSigned(Bureaucrat &b) {
+bool Form::sign(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
         _isSigned = true;
        std::cout << b << " signed " << this->getName() << std::endl;

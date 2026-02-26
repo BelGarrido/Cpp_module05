@@ -27,7 +27,7 @@ AForm::AForm(std::string const &name, int sgnGrade, int excGrade)
 //_________________________________DESTRUCTOR__
 
 AForm::~AForm() {
-    print("left the terminal");
+    std::cout << "Form left the terminal\n";
 }
 
 //_______________________________________COPY__
@@ -93,7 +93,7 @@ std::ostream& operator<<(std::ostream& output, const AForm& f) {
 
 //________________________OTHER_MEMEBERS_FT__
 
-bool AForm::beSigned(Bureaucrat &b) {
+bool AForm::sign(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
         toSign();
         std::cout << b << " signed " << this->getName() << std::endl;
@@ -104,7 +104,7 @@ bool AForm::beSigned(Bureaucrat &b) {
     throw GradeTooLowException();
 }
 
-bool AForm::beExecuted(Bureaucrat &b) {
+bool AForm::execute(Bureaucrat const &b) const {
     if(b.getGrade() <= _excGrade) {
         std::cout << b << " executed " << this->getName() << std::endl;
         return true;

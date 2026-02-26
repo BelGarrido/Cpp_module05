@@ -65,6 +65,9 @@ const char*  Bureaucrat::GradeTooHighException::what() const throw() {
 const char*  Bureaucrat::GradeTooLowException::what() const throw() {
     return "EXCEPTION(bureaucrat)!: Grade is too low";
 }
+const char*  Bureaucrat::FormNotSignException::what() const throw() {
+    return "EXCEPTION(bureaucrat)!: This form is not signed";
+}
 
 //________________________OTHER_MEMEBERS_FT__
 
@@ -86,11 +89,17 @@ void Bureaucrat::increment() {
 }
 
 void Bureaucrat::signForm(AForm &f) {
-    f.beSigned(*this);
+    if(f.isSigned() == false)
+        f.sign(*this);
+    else
+        std::cout << f << " is already signed" << std::endl;
 }
 
 void Bureaucrat::executeForm(AForm &f) {
-    f.beExecuted(*this);
+    if(f.isSigned() == true)
+        f.execute(*this);
+    else
+        throw FormNotSignException();
 }
 
 //_____________________________INSERTION__
