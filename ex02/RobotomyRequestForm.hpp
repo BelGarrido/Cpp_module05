@@ -15,8 +15,8 @@ class RobotomyRequestForm: public AForm {
         RobotomyRequestForm &operator=(const RobotomyRequestForm &original);
         ~RobotomyRequestForm();
 
-        virtual bool sign(Bureaucrat &b);
-        virtual bool execute(Bureaucrat const &b) const;
+        virtual void sign(Bureaucrat &b);
+        virtual void execute(Bureaucrat const &b) const;
 } ;
 
 #endif

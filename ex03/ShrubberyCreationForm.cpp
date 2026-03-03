@@ -2,7 +2,7 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target): AForm("ShrubberyCreation", 145, 137) {
     _target = target;
-    std::cout << "ShrubberyCreation has been created with it's constructor with a target: " << _target << std::endl;
+    //std::cout << "ShrubberyCreation has been created with it's constructor with a target: " << _target << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &original) : AForm(original) {}
@@ -13,22 +13,22 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-    std::cout << "ShrubberyCreation Form left the terminal" << std::endl;
+    //std::cout << "ShrubberyCreation Form left the terminal" << std::endl;
 }
 
-bool ShrubberyCreationForm::sign(Bureaucrat &b) {
+void ShrubberyCreationForm::sign(Bureaucrat &b) {
     int sgnGrade = this->getSgnGrade();
     if (b.getGrade() <= sgnGrade) {
         this->toSign();
         std::cout << b << " signed " << this->getName() << std::endl;
-        return true;
+        return ;
     }
-    std::cout << b << " couldn’t sign " << this->getName() << " because " << "grade is too low" << std::endl;
+    std::cout << b << " couldn’t sign " << this->getName() << " --> "; 
     throw GradeTooLowException();
 }
 
 
-bool ShrubberyCreationForm::execute(Bureaucrat const &b) const {
+void ShrubberyCreationForm::execute(Bureaucrat const &b) const {
     int excGrade = this->getExcGrade();
     std::string tree = 
         "             /\\\n"
@@ -63,8 +63,8 @@ bool ShrubberyCreationForm::execute(Bureaucrat const &b) const {
         NewFile << tree;
         NewFile.close();
         std::cout << b << " executed " << this->getName() << std::endl;
-        return true;
+        return ;
     }
-    std::cout << b << " couldn’t execute " << this->getName() << " because " << "grade is too low" << std::endl;
+    std::cout << b << " couldn’t execute " << this->getName() << " --> ";
     throw GradeTooLowException();    
 }

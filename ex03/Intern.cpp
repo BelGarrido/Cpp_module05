@@ -36,13 +36,13 @@ AForm* (*Intern::fPtr[Intern::FORM_COUNT])(const std::string&) = {
 //______________________ DEFAULT_CONSTRUCTOR__
 
 Intern::Intern() {
-    print("created with default constructor");
+    print("created");
 }
 
 //_________________________________DESTRUCTOR__
 
 Intern::~Intern() {
-    print("left the terminal");
+    //print("left the terminal");
 }
 
 AForm* Intern::makeForm(const std::string &name, const std::string &target) {

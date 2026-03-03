@@ -2,7 +2,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target): AForm("PresidentialPardon", 25, 5) {
     _target = target;
-    std::cout << "PresidentialPardon has been created with it's constructor with a target: " << _target << std::endl;
+    //std::cout << "PresidentialPardon has been created with it's constructor with a target: " << _target << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &original) : AForm(original) {}
@@ -13,27 +13,27 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 PresidentialPardonForm::~PresidentialPardonForm() {
-    std::cout << "PresidentialPardon Form left the terminal" << std::endl;
+    //std::cout << "PresidentialPardon Form left the terminal" << std::endl;
 }
 
-bool PresidentialPardonForm::sign(Bureaucrat &b) {
+void PresidentialPardonForm::sign(Bureaucrat &b) {
     int sgnGrade = this->getSgnGrade();
     if (b.getGrade() <= sgnGrade) {
         this->toSign();
         std::cout << b << " signed " << this->getName() << std::endl;
-        return true;
+        return ;
     }
-    std::cout << b << " couldn’t sign " << this->getName() << " because " << "grade is too low" << std::endl;
+    std::cout << b << " couldn’t sign " << this->getName() << " --> "; 
     throw GradeTooLowException();
 }
 
 
-bool PresidentialPardonForm::execute(Bureaucrat const &b) const {
+void PresidentialPardonForm::execute(Bureaucrat const &b) const {
     int excGrade = this->getExcGrade();
     if(b.getGrade() <= excGrade) {
         std::cout << _target << " has been pardoned by Zaphod Beeblebrox" << std::endl;
-        return true;
+        return ;
     }
-    std::cout << b << " couldn’t execute " << this->getName() << " because " << "grade is too low" << std::endl;
+    std::cout << b << " couldn’t execute " << this->getName() << " --> ";
     throw GradeTooLowException();    
 }

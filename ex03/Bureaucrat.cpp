@@ -5,7 +5,7 @@
 Bureaucrat::Bureaucrat()
     :_name("Just another bureaucrat"),
     _grade(150) {
-    std::cout << MAGENTA << _name << " created with parametized constructor" << std::endl;
+    //std::cout << _name << " created" << std::endl;
 }
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
@@ -14,13 +14,13 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade)
     :_name(name) {
     validGrade(grade);
     _grade = grade;
-    print("created with parametized constructor");
+    print("created");
 }
 
 //_________________________________DESTRUCTOR__
 
 Bureaucrat::~Bureaucrat() {
-    print("left the terminal");
+    //print("left the terminal");
 }
 
 //_______________________________________COPY__

@@ -8,7 +8,7 @@ AForm::AForm()
     _isSigned(false),
     _sgnGrade(150),
     _excGrade(150) {
-    std::cout << _name << " created with default constructor" << std::endl;
+    std::cout << _name << " created" << std::endl;
 }
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
@@ -21,13 +21,13 @@ AForm::AForm(std::string const &name, int sgnGrade, int excGrade)
 
     validGrade(_sgnGrade);
     validGrade(_excGrade);
-    print("created with parametized constructor");
+    print("created");
 }
 
 //_________________________________DESTRUCTOR__
 
 AForm::~AForm() {
-    print("left the terminal");
+    //print("left the terminal");
 }
 
 //_______________________________________COPY__
@@ -93,21 +93,19 @@ std::ostream& operator<<(std::ostream& output, const AForm& f) {
 
 //________________________OTHER_MEMEBERS_FT__
 
-bool AForm::sign(Bureaucrat &b) {
+void AForm::sign(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
         toSign();
         std::cout << b << " signed " << this->getName() << std::endl;
-        return true;
     }
     
     std::cout << b << " couldn’t sign "<< this->getName() << " because " << "grade is too low" << std::endl;
     throw GradeTooLowException();
 }
 
-bool AForm::execute(Bureaucrat const &b) const {
+void AForm::execute(Bureaucrat const &b) const {
     if(b.getGrade() <= _excGrade) {
         std::cout << b << " executed " << this->getName() << std::endl;
-        return true;
     }
     std::cout << b << " couldn’t be executed " << this->getName() << " because " << "grade is too low" << std::endl;
     throw GradeTooLowException();   

@@ -8,7 +8,7 @@ Form::Form()
     _isSigned(false),
     _sgnGrade(150),
     _excGrade(150) {
-    print("created with default constructor");
+    print("created");
 }
 
 //___________________ PARAMETIZED_CONSTRUCTOR__
@@ -21,7 +21,7 @@ Form::Form(std::string const &name, int sgnGrade, int excGrade)
 
     validGrade(_sgnGrade);
     validGrade(_excGrade);
-    print("created with parametized constructor");
+    print("created");
 }
 
 //_________________________________DESTRUCTOR__
