@@ -20,6 +20,7 @@ void RobotomyRequestForm::sign(Bureaucrat &b) {
     int sgnGrade = this->getSgnGrade();
     if (b.getGrade() <= sgnGrade) {
         this->toSign();
+        return;
     }
     std::cout << b << " couldn’t sign " << this->getName() << " --> ";
     throw GradeTooLowException();

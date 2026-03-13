@@ -45,12 +45,12 @@ int main()
         std::cout << MAGENTA << "-> Sign = SUCCESS\n" << RESET;
         manager.signForm(SC);
 
+        std::cout << MAGENTA << "-> Execute = SUCCESS\n" << RESET;
+        manager.executeForm(SC);
+
         std::cout << MAGENTA << "-> Execute with low grade = FAILURE\n" << RESET;
         Bureaucrat lowExec("LowExec", 150);
         lowExec.executeForm(SC);
-
-        std::cout << MAGENTA << "-> Execute = SUCCESS\n" << RESET;
-        manager.executeForm(SC);
     }
     catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -65,7 +65,7 @@ int main()
 
     try {
         RobotomyRequestForm RR(target);
-        Bureaucrat boss("Boss", 45);
+        Bureaucrat boss("Boss", 30);
 
         std::cout << YELLOW << "-> Sign\n" << RESET;
         boss.signForm(RR);
@@ -129,11 +129,6 @@ int main()
     catch (const std::exception &e) {
         std::cout << e.what() << std::endl;
     }
-
-    std::cout << std::endl;
-    std::cout << WHITE
-              << "*´¯`*..*´¯`* [ End ] *´¯`*..*´¯`* "
-              << RESET << std::endl;
 
     return 0;
 }

@@ -159,10 +159,5 @@ int main() {
         std::cout << e.what() << std::endl;
     }
 
-    std::cout << std::endl;
-    std::cout << WHITE
-              << "*´¯`*..*´¯`* [ End ] *´¯`*..*´¯`* "
-              << RESET << std::endl;
-
     return 0;
 }

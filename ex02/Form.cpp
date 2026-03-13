@@ -97,8 +97,8 @@ void AForm::sign(Bureaucrat &b) {
     if (b.getGrade() <= _sgnGrade) {
         toSign();
         std::cout << b << " signed " << this->getName() << std::endl;
+        return;
     }
-    
     std::cout << b << " couldn’t sign "<< this->getName() << " because " << "grade is too low" << std::endl;
     throw GradeTooLowException();
 }
